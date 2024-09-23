@@ -30,16 +30,6 @@ jobs:
         with:
           ignore_paths: tests/shunit2
 
-  alpine:
-    needs: verify
-    uses: ./.github/workflows/build-image.yml
-    with:
-      containerfile: Dockerfile-alpine
-      image: "$GITHUB_REPOSITORY"
-      tag: alpine
-      update-check: "apk update >/dev/null && apk list --upgradable"
-    secrets: inherit
-
   debian:
     needs: verify
     uses: ./.github/workflows/build-image.yml
